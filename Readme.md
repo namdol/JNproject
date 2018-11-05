@@ -25,7 +25,7 @@
 <img src="https://user-images.githubusercontent.com/43259813/47988210-fdec6380-e124-11e8-8173-e98d79dfa166.jpg">
 
 추리소설의 랭킹보기 버튼을 클릭하면 추리소설 페이지로 이동
-
+```{.java}
 <h2 class="mx-auto mb-5">
 <em>추리소설</em>
 </h2>
@@ -76,7 +76,7 @@ return list;
           </div>
           </li>
 </c:forEach>
-
+```
 ---
 
 <img src="https://user-images.githubusercontent.com/43259813/47988212-fdec6380-e124-11e8-976c-57e0ee10600c.jpg">
