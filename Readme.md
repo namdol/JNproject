@@ -26,7 +26,7 @@
 
 추리소설의 랭킹보기 버튼을 클릭하면 추리소설 페이지로 이동
 ```{.java}
-//
+//index.html
 
 <h2 class="mx-auto mb-5">
 <em>추리소설</em>
