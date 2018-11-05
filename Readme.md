@@ -26,6 +26,57 @@
 
 추리소설의 랭킹보기 버튼을 클릭하면 추리소설 페이지로 이동
 
+<h2 class="mx-auto mb-5">
+<em>추리소설</em>
+</h2>
+<a class="btn btn-primary btn-xl" href="churiList.do">랭킹 보기</a>
+
+if(cmd.equals("/churiList.do")) {
+action=new JnListAction("web/listindex.jsp");
+}
+
+BoardDAO dao=new BoardDAO();
+ArrayList<BoardVO> list=dao.selectAll()
+
+String sql="select bno,rank,writer,name,content,readcount,score from churilist order by rank asc";
+pstmt=con.prepareStatement(sql);
+rs=pstmt.executeQuery();
+while(rs.next()) {
+BoardVO vo=new BoardVO();
+vo.setBno(rs.getInt(1));
+vo.setRank(rs.getInt(2));
+vo.setWriter(rs.getString(3));
+vo.setName(rs.getString(4));
+vo.setContent(rs.getString(5).substring(0,70)+"...");
+vo.setReadcount(rs.getInt(6));
+vo.setScore(rs.getInt(7));
+list.add(vo);
+}
+return list;
+
+<c:forEach var="vo" items="${list}">
+          <li onclick="location.href='churiHitUpdate.do?bno=${vo.bno}';">
+          <h4 class="style2"><a href="#">${vo.rank}<b style="font-size: 13px">위</b></a></h4>
+          <img src="web/images/book/${vo.name}.jpg" width=70% height=70%><!-- width="282" height="118" -->
+          <div class="post-info">
+          <div class="post-basic-info">
+                    <h3><a href="#">${vo.name}</a></h3>
+                    <span><a href="#">-&nbsp;${vo.writer}&nbsp;-</a></span>
+                    <p>${vo.content}</p>
+          </div>
+          <div class="post-info-rate-share">
+                    <div class="rateit">
+                              <span> </span>
+                    </div>
+                    <div class="post-share">
+                              <span>조회수 : ${vo.readcount} </span>
+                    </div>
+                    <div class="clear"> </div>
+          </div>
+          </div>
+          </li>
+</c:forEach>
+
 ---
 
 <img src="https://user-images.githubusercontent.com/43259813/47988212-fdec6380-e124-11e8-976c-57e0ee10600c.jpg">
