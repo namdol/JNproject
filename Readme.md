@@ -33,18 +33,21 @@
 </h2>
 <a class="btn btn-primary btn-xl" href="churiList.do">랭킹 보기</a>
 
-//
+
+//BoardActionFactory.java
 
 if(cmd.equals("/churiList.do")) {
 action=new JnListAction("web/listindex.jsp");
 }
 
-//
+
+//JnListAction.java
 
 BoardDAO dao=new BoardDAO();
 ArrayList<BoardVO> list=dao.selectAll()
 
-//
+
+//BoardDAO.java
 
 String sql="select bno,rank,writer,name,content,readcount,score from churilist order by rank asc";
 pstmt=con.prepareStatement(sql);
@@ -62,7 +65,8 @@ list.add(vo);
 }
 return list;
 
-//
+
+//listindex.jsp
 
 <c:forEach var="vo" items="${list}">
           <li onclick="location.href='churiHitUpdate.do?bno=${vo.bno}';">
