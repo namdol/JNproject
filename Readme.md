@@ -26,17 +26,25 @@
 
 추리소설의 랭킹보기 버튼을 클릭하면 추리소설 페이지로 이동
 ```{.java}
+//
+
 <h2 class="mx-auto mb-5">
 <em>추리소설</em>
 </h2>
 <a class="btn btn-primary btn-xl" href="churiList.do">랭킹 보기</a>
 
+//
+
 if(cmd.equals("/churiList.do")) {
 action=new JnListAction("web/listindex.jsp");
 }
 
+//
+
 BoardDAO dao=new BoardDAO();
 ArrayList<BoardVO> list=dao.selectAll()
+
+//
 
 String sql="select bno,rank,writer,name,content,readcount,score from churilist order by rank asc";
 pstmt=con.prepareStatement(sql);
@@ -53,6 +61,8 @@ vo.setScore(rs.getInt(7));
 list.add(vo);
 }
 return list;
+
+//
 
 <c:forEach var="vo" items="${list}">
           <li onclick="location.href='churiHitUpdate.do?bno=${vo.bno}';">
