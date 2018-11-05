@@ -32,8 +32,13 @@
 <em>추리소설</em>
 </h2>
 <a class="btn btn-primary btn-xl" href="churiList.do">랭킹 보기</a>
+```
+---
 
+<img src="https://user-images.githubusercontent.com/43259813/47988212-fdec6380-e124-11e8-976c-57e0ee10600c.jpg">
 
+데이터베이스에 저장해 놓은 책 정보(순위, 이미지, 제목, 작가, 소개글을 subString 한것, 조회수)를 순위 순으로 정렬하여 화면에 출력
+```{.java}
 //BoardActionFactory.java
 
 if(cmd.equals("/churiList.do")) {
@@ -91,12 +96,6 @@ return list;
           </li>
 </c:forEach>
 ```
----
-
-<img src="https://user-images.githubusercontent.com/43259813/47988212-fdec6380-e124-11e8-976c-57e0ee10600c.jpg">
-
-데이터베이스에 저장해 놓은 책 정보(순위, 이미지, 제목, 작가, 소개글을 subString 한것, 조회수)를 순위 순으로 정렬하여 화면에 출력
-
 ---
 
 <img src="https://user-images.githubusercontent.com/43259813/47988213-fdec6380-e124-11e8-8d05-0c18fc0ca160.jpg">
