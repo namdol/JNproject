@@ -2,7 +2,7 @@
 신입 개발자 남도영입니다.
 잘 하겠습니다!
 ***
-프로젝트명 : jn-100
+**프로젝트명** : jn-100
 
 **수행기간** : 2018.10.1 ~ 2018.10.22
 
@@ -16,22 +16,25 @@
 
 ---
 
-
-
-
 <img src="https://user-images.githubusercontent.com/43259813/47988153-cb426b00-e124-11e8-9103-a182dcf43111.jpg">
+
+프로젝트 구조
+
+---
+
+<img src="https://user-images.githubusercontent.com/43259813/47988210-fdec6380-e124-11e8-8173-e98d79dfa166.jpg">
 
 추리소설의 랭킹보기 버튼을 클릭하면 추리소설 페이지로 이동
 
 ---
 
-<img src="https://user-images.githubusercontent.com/43259813/47988153-cb426b00-e124-11e8-9103-a182dcf43111.jpg">
+<img src="https://user-images.githubusercontent.com/43259813/47988212-fdec6380-e124-11e8-976c-57e0ee10600c.jpg">
 
 데이터베이스에 저장해 놓은 책 정보(순위, 이미지, 제목, 작가, 소개글을 subString 한것, 조회수)를 순위 순으로 정렬하여 화면에 출력
 
 ---
 
-<img src="https://user-images.githubusercontent.com/43259813/47988153-cb426b00-e124-11e8-9103-a182dcf43111.jpg">
+<img src="https://user-images.githubusercontent.com/43259813/47988213-fdec6380-e124-11e8-8d05-0c18fc0ca160.jpg">
 
 책을 선택하면 DB에 저장되어 있는 해당 책의 조회수를 증가시키고 자세한 정보를 보여주는 페이지로 이동, 책의 고유번호를 참조하는 참조키를 가진 댓글 테이블에서 댓글을 출력
 
@@ -40,7 +43,7 @@
 
 ---
 
-<img src="https://user-images.githubusercontent.com/43259813/47988153-cb426b00-e124-11e8-9103-a182dcf43111.jpg">
+<img src="https://user-images.githubusercontent.com/43259813/47988213-fdec6380-e124-11e8-8d05-0c18fc0ca160.jpg">
 
 페이지 하단에 댓글 입력창 위치
 
