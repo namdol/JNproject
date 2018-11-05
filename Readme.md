@@ -43,7 +43,7 @@
 
 ---
 
-<img src="https://user-images.githubusercontent.com/43259813/47988213-fdec6380-e124-11e8-8d05-0c18fc0ca160.jpg">
+<img src="https://user-images.githubusercontent.com/43259813/47988214-fe84fa00-e124-11e8-9a52-6c9b38804998.jpg">
 
 페이지 하단에 댓글 입력창 위치
 
