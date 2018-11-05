@@ -16,7 +16,7 @@
 
 ---
 
-<img src="https://user-images.githubusercontent.com/43259813/47988153-cb426b00-e124-11e8-9103-a182dcf43111.jpg">
+<img src="https://user-images.githubusercontent.com/43259813/47989435-596c2080-e128-11e8-8fb6-86069d66d658.jpg">
 
 프로젝트 구조
 
