@@ -265,4 +265,19 @@ return new ActionForward(path, true);
 
 //BoardDAO.java.insertCmt()
 
+pstmt=con.prepareStatement("select max(cmt_number) from churicomments"); 
+rs=pstmt.executeQuery();
+if(rs.next())
+	re_ref=rs.getInt(1)+1;
+else
+	re_ref=1;
+String sql="insert into churicomments(cmt_name,cmt_content,cmt_date,article_number,cmt_password,re_ref) ";
+	sql+="values(?, ?, now(), ?, ?,?);";
+pstmt=con.prepareStatement(sql);
+pstmt.setString(1, comment.getCmt_name());;
+pstmt.setString(2, comment.getCmt_content());
+pstmt.setInt(3, comment.getArticle_number());//아티클넘버는 bno임
+pstmt.setString(4, comment.getCmt_password());
+pstmt.setInt(5, re_ref);
+result=pstmt.executeUpdate();
 ```
