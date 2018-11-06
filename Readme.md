@@ -52,7 +52,7 @@ BoardDAO dao=new BoardDAO();
 ArrayList<BoardVO> list=dao.selectAll()
 
 
-//BoardDAO.java
+//BoardDAO.java.selectAll()
 
 String sql="select bno,rank,writer,name,content,readcount,score from churilist order by rank asc";
 pstmt=con.prepareStatement(sql);
@@ -104,6 +104,102 @@ return list;
 
 네이버 버튼은 해당 책을 네이버 책에 검색하는 새창
 (a href="https://book.naver.com/search/search.nhn?query=${vo.name}")
+```{.java}
+//BoardActionFactory.java
+
+else if(cmd.equals("/churiHitUpdate.do")) {
+          action=new ChuriHitUpdateAction("web/single-page.jsp");
+}
+
+
+//ChuriHitUpdateAction.java
+
+int bno=Integer.parseInt(req.getParameter("bno"));
+          BoardDAO dao=new BoardDAO();
+          //조회수 증가
+	int result=dao.setReadCountUpdate(bno);
+          if(result>0) {
+                    path+="?bno="+bno;
+          }
+          //책정보 담기
+          BoardVO vo=dao.getRow(bno);
+          if(vo!=null) {
+                    req.setAttribute("vo", vo);
+          }
+          //댓글 담기
+          ArrayList<CommentVO> comments=dao.selectComments(bno);
+          req.setAttribute("comments", comments);
+
+          return new ActionForward(path, false);
+
+
+//BoardDAO.java.setReadCountUpdate()
+          
+          String sql="update churilist set readcount=readcount+1 where bno=?";
+	pstmt=con.prepareStatement(sql);
+	pstmt.setInt(1, bno);
+	result=pstmt.executeUpdate();
+          
+          
+//BoardDAO.java.selectComments()
+          
+          String sql="select * from churicomments where article_number=? order by re_ref asc,re_seq asc";
+          pstmt=con.prepareStatement(sql);
+          pstmt.setInt(1, bno);
+          rs=pstmt.executeQuery();
+
+
+//single-page.jsp
+          
+          //책 정보 부분
+          <p align="right">조회수 : ${vo.readcount}</p>
+          <h4 class="style3"><a>${vo.rank}<b style="font-size: 20px">위</b></a></h4>
+          <img src="web/images/book/${vo.name}.jpg" title="banner1">
+          <p>&nbsp;</p>
+          <h3><a href="#">${vo.name}</a></h3>
+          <p>&nbsp;</p>
+          <p>${vo.writer}</p> 
+          <p>${vo.info}</p> 
+          <p>${vo.price}원</p> 
+          <p>&nbsp;</p>
+          <p><a>${vo.content}</a></p> 
+          
+          //댓글 부분
+          <h2>Comments</h2>
+          <c:forEach var="cmt" items="${comments}">
+          <c:if test="${cmt.re_seq==0}">//그냥 댓글이라면
+          <div class="grid1_of_2">
+                    <div class="grid_img">
+                              <img src="web/images/pic10.jpg" alt="">
+                    </div>
+                    <div class="grid_text">
+                              <h4 class="style2 list">${cmt.cmt_name}</h4>
+                              <h3 class="style2">${cmt.cmt_date}</h3>
+                              <p class="para top"> ${cmt.cmt_content}</p>
+                              <a class="btn1" name="reply_reply" reply_id="${cmt.cmt_number}" bno="${vo.bno}"                                                             style="cursor:pointer">Reply</a>
+                              <a style="cursor:pointer" onclick="openDelForm(${cmt.cmt_number},${vo.bno})" class="btn2">Delete</a>
+                    </div>
+                    <div class="clear"></div>
+          </div>
+          </c:if>
+          <c:if test="${cmt.re_seq!=0}">//댓글에 대한 댓글이라면
+          <div class="grid1_of_2 left">
+                    <div class="grid_img">
+                              <img src="web/images/pic12.jpg" alt="">
+                    </div>
+                    <div class="grid_text">
+                              <h4 class="style2 list">${cmt.cmt_name}</h4>
+                              <h3 class="style2">${cmt.cmt_date}</h3>
+                              <p class="para top"> ${cmt.cmt_content}</p>
+                              <a style="cursor:pointer" onclick="openDelForm(${cmt.cmt_number},${vo.bno})" class="btn2">Delete</a>
+                    </div>
+                    <div class="clear"></div>
+          </div>
+          </c:if>
+          </c:forEach>
+
+```
+
 
 ---
 
