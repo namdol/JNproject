@@ -197,7 +197,6 @@ int bno=Integer.parseInt(req.getParameter("bno"));
           </div>
           </c:if>
           </c:forEach>
-
 ```
 
 
@@ -214,3 +213,56 @@ int bno=Integer.parseInt(req.getParameter("bno"));
 Delete를 누르면 비밀번호 확인창이 뜨고 비밀번호가 맞으면 삭제되고 아니면 틀렸다는 문구와 함께 돌아감. 
 
 댓글 삭제시 댓글에 대한 댓글이 함께 삭제되고 댓글에 대한 댓글 개별 삭제시 댓글에 대한 댓글만 삭제
+```{.java}
+//single-page.jsp
+
+//하단의 댓글 입력 부분
+<h2>Leave a Comment</h2>
+<div class="table-form">
+	<form action="cmtInsert.do" method="post" role="form">
+		<div>
+			<label>Name<span>*</span></label>
+			<input type="text" name="cmt_name">
+		</div>
+		<div>
+			<label>Password<span>*</span></label>
+			<input type="password" name="cmt_password">
+		</div>
+		<div>
+			<label>Your Comment<span>*</span></label>
+			<textarea name="cmt_content"> </textarea>	
+		</div>
+		<input type=hidden name="article_number" value="${vo.bno}"> 
+	<input type="submit" value="submit">
+	</form>
+</div>
+
+
+//BoardActionFactory.java
+
+else if(cmd.equals("/cmtInsert.do")) {
+	action=new ChuriCommentInsert("churiHitUpdate.do");
+}
+
+
+//ChuriCommentInsert.jvaa
+
+CommentVO comment=new CommentVO();
+comment.setArticle_number(Integer.parseInt(req.getParameter("article_number")));
+comment.setCmt_name(req.getParameter("cmt_name"));
+comment.setCmt_password(req.getParameter("cmt_password"));
+comment.setCmt_content(req.getParameter("cmt_content"));
+BoardDAO dao=new BoardDAO();
+int result=dao.insertCmt(comment);
+
+if (result<0) {
+	path="web/single-page.jsp";
+}else {
+	path+="?bno="+comment.getArticle_number();
+}
+return new ActionForward(path, true);
+
+
+//BoardDAO.java.insertCmt()
+
+```
