@@ -4,12 +4,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -102,7 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="single-page">
 							<div class="single-page-artical">
 								<div class="artical-content">
-								<p align="right">조회수 : ${vo.readcount}</p>
+									<p align="right">조회수 : ${vo.readcount}</p>
 									<h4 class="style3"><a>${vo.rank}<b style="font-size: 20px">위</b></a></h4>
 									<img src="web/images/book/${vo.name}.jpg" title="banner1">
 									<p>&nbsp;</p>
@@ -116,16 +111,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								    </div>
 								    <div class="artical-links">
 		  						 	<ul>
-		  						 		<!-- <li><a href="#"><img src="web/images/blog-icon2.png" title="Admin"><span>admin</span></a></li>
-		  						 		<li><a href="#"><img src="web/images/blog-icon3.png" title="Comments"><span>No comments</span></a></li>
-		  						 		<li><a href="#"><img src="web/images/blog-icon4.png" title="Lables"><span>View posts</span></a></li> -->
 		  						 	</ul>
 		  						 </div>
 		  						 <div class="share-artical">
 		  						 	<ul>
-		  						 		<!-- <li><a href="#"><img src="web/images/facebooks.png" title="facebook">Facebook</a></li>
-		  						 		<li><a href="#"><img src="web/images/twiter.png" title="Twitter">Twiiter</a></li>
-		  						 		<li><a href="#"><img src="web/images/google+.png" title="google+">Google+</a></li> -->
 		  						 		<li><a href="https://book.naver.com/search/search.nhn?query=${vo.name}" target="_blank"><img src="web/images/naver2.png" title="rss">NAVER book</a></li>
 		  						 	</ul>
 		  						 </div>
@@ -166,30 +155,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					</c:if>
 					</c:forEach>
-					<!-- <div class="grid1_of_2 left">
-						<div class="grid_img">
-							<a href=""><img src="web/images/pic12.jpg" alt=""></a>
-						</div>
-						<div class="grid_text">
-							<h4 class="style1 list"><a href="#">Designer First</a></h4>
-							<h3 class="style">march 3, 2013 - 4.00 PM</h3>
-							<p class="para top"> All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
-							<a href="" class="btn1">Click to Reply</a>
-						</div>
-						<div class="clear"></div>
-					</div>
-					<div class="grid1_of_2">
-						<div class="grid_img">
-							<a href=""><img src="web/images/pic12.jpg" alt=""></a>
-						</div>
-						<div class="grid_text">
-							<h4 class="style1 list"><a href="#">Ro Kanth</a></h4>
-							<h3 class="style">march 2, 2013 - 12.50 AM</h3>
-							<p class="para top"> All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
-							<a href="" class="btn1">Click to Reply</a>
-						</div>
-						<div class="clear"></div>
-					</div> -->								
 						<div class="artical-commentbox">
 						 	<h2>Leave a Comment</h2>
 				  			<div class="table-form">
@@ -209,8 +174,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<input type=hidden name="article_number" value="${vo.bno}"> 
 								<input type="submit" value="submit">
 								</form>
-								
-									
 							</div>
 							<div class="clear"> </div>
 				  		</div>			
@@ -236,48 +199,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		
 
 		</script>
-		<!----//End-footer--->
-		<!---//End-wrap---->
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script>
-	$.ajaxSetup({
-		type:"POST",
-		async:true,
-		dataType:"json",
-		error:function(xhr){
-			console.log("error html = " +xhr.statusText);
-		}
-	});
-	$(function() {
-		$("#commentWrite").on("click", function() {
-			$.ajax({
-				url:"",
-				
-				data:{
-					cmt_name:$("#cmt_name").val(),
-					cmt_password:$("cmt_password").val(),
-					cmt_content:$("cmt_content").val(),
-					bno:"${vo.bno}"
-				},
-				beforeSend:function(){
-					console.log("시작 전...");
-				},
-				complete:function(){
-					console.log("완료 후...");
-				},
-				success:function(data){
-					if(data.result == 1) {
-						console.log("comment가 정상적으로 입력되었습니다.");
-						$("#cmt_name").val("");
-						$("#cmt_password").val("");
-						$("#cmt_content").val("");
-						
-					}
-				}
-			})
-		})
-	})
-	</script> -->
+
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
 	<script type="text/javascript">
 	//대댓글 입력창
